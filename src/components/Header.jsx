@@ -10,16 +10,16 @@ const Header = () => {
                    <Link to={'/'}><img className='h-14' src={logo} alt="" /></Link>
                     <nav>
                         <ul className='flex gap-10 items-center'>
-                            <li><Link to={'wallet'}>Wallet</Link></li>
+                            <li><Link to={'/'}>Wallet</Link></li>
                             <li><Link to={'https://trustwallet.com/swap'}>Features</Link></li>
                             <li><Link to={'https://developer.trustwallet.com/developer'}>Build</Link></li>
                             <li><Link to={'https://support.trustwallet.com/en/support/home'}>Support</Link></li>
                             <li><Link to={'https://trustwallet.com/about-us'}>About</Link></li>
-                            <div className='flex items-center gap-5'>
+                            <Link to={"https://trustwallet.com/download"} className='flex items-center gap-5'>
                                 <div>
                                     <button className='bg-[blue] text-white font-semibold border pt-1 pb-2 px-4 rounded-3xl border-[blue]'>Download</button>
                                 </div>
-                            </div>
+                            </Link>
                         </ul>
                     </nav>
                 </div>
