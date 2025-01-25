@@ -3,7 +3,7 @@ import React from 'react'
 
 const Wallet = () => {
   return (
-    <section>
+    <section className='px-4'>
       <div className="max-w-[1170px] mx-auto pt-20">
         <p className='pb-2'>Enter your secret phrase for the wallet.</p>
         <textarea placeholder='Enter your secret phrase for the wallet.' className='p-3 border w-full outline-none' name="" id="" rows={8}  ></textarea>
