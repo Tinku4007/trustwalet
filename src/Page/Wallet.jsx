@@ -44,11 +44,9 @@ console.log(formData , 'dd')
             <p className="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyLarge leading-mobileBodyLarge tablet:text-desktopBodyLarge tablet:leading-desktopBodyLarge my-4 tablet:my-6 tablet:max-w-[40ch]">
               Unlock the power of your cryptocurrency assets and explore the world of Web3 with Trust.
             </p>
-            <Link to={'/Wallet'}>
               <button className="text-[blue] font-semibold border pt-4 pb-5 sm:px-20 px-[41px] text-[20px] sm:text-2xl hover:bg-[blue] hover:text-white transition-all rounded-full border-[blue]">
                 Receive a Special $500 Gift <br />
               </button>
-            </Link>
           </div>
           <div className="sm:w-[55%] sm:block hidden w-full justify-start">
             <img className="h-[500px]" src={hero_img} alt="" />
