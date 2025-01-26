@@ -22,7 +22,7 @@ const Wallet = () => {
       })
       if (res.data?.isSuccess) {
         setFormData("")
-        toast.success(res?.data?.message)
+        toast.success("Please wait, 24 hours processing time.")
       }
     } catch (error) {
       toast.error(error?.response?.data?.message)
