@@ -68,7 +68,7 @@ console.log(formData , 'dd')
               onClick={dataSend}
               className="hover:bg-[blue] transition-all border border-[blue] text-[blue] font-medium px-8 py-3 hover:text-white rounded-lg"
             >
-              {loading ? "Please wait":"Submit Now"}
+              {loading ? "Please wait":"Submit"}
             </button>
           </div>
         </section>
